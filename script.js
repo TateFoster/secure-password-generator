@@ -27,6 +27,45 @@ generateBtn.addEventListener("click", writePassword);
 var generatePassword = function() {
   var passwordLength = parseInt(prompt("How long would you like your password? (Min 8 char - max 128 char)"))
   if (passwordLength >= 8 && passwordLength <= 128) {
+    var characterInclusions = function(){
+      var lowercaseInclude = confirm("Would you like to include lowercase letters?")
+      var uppercaseInclude = confirm("Would you like to include uppercase letters?")
+      var numerialsInclude = confirm("Would you like to include numerals?")
+      var specialCharsInclude = confirm("Would you like to include speical characters?")
+      if (lowercaseInclude || uppercaseInclude || numerialsInclude || specialCharsInclude){
+        
+        var combineChars = function() {
+          if (lowercaseInclude && !uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
+            var lowercasePassword = function() {
+              var lowercasePassword = "";
+              for (var i = 0; i < passwordLength; i++)
+               lowercasePassword += lowercase[Math.floor(lowercase.length * Math.random())];
+              return lowercasePassword;
+            }
+            
+            lowercasePassword();
+            console.log(lowercasePassword())
+            
+          } else if (!lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
+            upppercasePassword();
+          } else if (!lowercaseInclude && !uppercaseInclude && numerialsInclude && !specialCharsInclude) {
+            numerialsPassword();
+          } else if (!lowercaseInclude && !uppercaseInclude && !numerialsInclude && specialCharsInclude) {
+            specialCharsPassword();
+          } else if (lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
+            var lowerUpper = lowercase.concat(upppercase);
+        
+          }
+        
+        }
+        combineChars();
+    
+      } else {
+        alert("Must choose at least one character type.");
+      }
+    }
+    
+    
     characterInclusions();
 
   } else { alert("Length must be between 8 to 128 characters.");
@@ -34,39 +73,10 @@ var generatePassword = function() {
   }
 }
 
-var characterInclusions = function(){
-  var lowercaseInclude = confirm("Would you like to include lowercase letters?")
-  var uppercaseInclude = confirm("Would you like to include uppercase letters?")
-  var numerialsInclude = confirm("Would you like to include numerals?")
-  var specialCharsInclude = confirm("Would you like to include speical characters?")
-  if (lowercaseInclude || uppercaseInclude || numerialsInclude || specialCharsInclude){
-    combineChars();
 
-  } else {
-    alert("Must choose at least one character type.");
-  }
-}
 
-var combineChars = function() {
-  if (lowercaseInclude && !uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
-    lowercasePassword();
-  } else if (!lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
-    upppercasePassword();
-  } else if (!lowercaseInclude && !uppercaseInclude && numerialsInclude && !specialCharsInclude) {
-    numerialsPassword();
-  } else if (!lowercaseInclude && !uppercaseInclude && !numerialsInclude && specialCharsInclude) {
-    specialCharsPassword();
-  } else if (lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
-    var lowerUpper = lowercase.concat(upppercase);
 
-  }
 
-}
-
-var lowercasePassword = function() {
-  var lowercasePassword = lowercase[Math.floor(lowercase.length * Math.random())];
-  return 
-}
 
 var uppercasePassword = function() {
 
