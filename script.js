@@ -37,28 +37,68 @@ var generatePassword = function() {
         var combineChars = function() {
           if (lowercaseInclude && !uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
             var lowercasePassword = function() {
-              var lowercasePassword = "";
+              var lowercasePasswordReady = "";
               for (var i = 0; i < passwordLength; i++)
-               lowercasePassword += lowercase[Math.floor(lowercase.length * Math.random())];
-              return lowercasePassword;
+               lowercasePasswordReady += lowercase[Math.floor(lowercase.length * Math.random())];
+              return lowercasePasswordReady;
             }
             
-            lowercasePassword();
-            console.log(lowercasePassword())
+            var passwordLower = lowercasePassword();
+            // console.log(passwordLower);S
+            return passwordLower;
             
           } else if (!lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
-            upppercasePassword();
+            var uppercasePassword = function() {
+              var uppercasePasswordReady = "";
+              for (var i = 0; i < passwordLength; i++)
+               uppercasePasswordReady += upppercase[Math.floor(upppercase.length * Math.random())];
+              return uppercasePasswordReady;
+            }
+            var passwordUpper = uppercasePassword();
+            return passwordUpper;
           } else if (!lowercaseInclude && !uppercaseInclude && numerialsInclude && !specialCharsInclude) {
-            numerialsPassword();
+            var numerialsPassword = function() {
+              var numerialsPasswordReady = "";
+              for (var i = 0; i < passwordLength; i++)
+               numerialsPasswordReady += numerials[Math.floor(numerials.length * Math.random())];
+              return numerialsPasswordReady;
+            }
+
+            var passwordNum =numerialsPassword();
+            return passwordNum
           } else if (!lowercaseInclude && !uppercaseInclude && !numerialsInclude && specialCharsInclude) {
-            specialCharsPassword();
+            var specialCharsPassword = function() {
+              var specialCharsPasswordReady = "";
+              for (var i = 0; i < passwordLength; i++)
+              specialCharsPasswordReady += specialChars[Math.floor(specialChars.length * Math.random())];
+              return specialCharsPasswordReady;
+            }
+
+            var passwordSpecial = specialCharsPassword();
+            return passwordSpecial;
+
           } else if (lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
             var lowerUpper = lowercase.concat(upppercase);
+
+            var lowerUpperPassword = function() {
+              var lowerUpperPasswordReady = "";
+              for (var i = 0; i < passwordLength; i++)
+              lowerUpperPasswordReady += lowerUpper[Math.floor(lowerUpper.length * Math.random())];
+              var lowerUpperTest = lowerUpperPasswordReady.split("")
+              console.log(lowerUpperTest)
+              console.log(lowerUpperTest.includes(lowercase))
+              console.log(lowerUpperTest.includes(upppercase))
+              if (lowerUpperTest)
+              return lowerUpperPasswordReady;
+            }
+            var passwordLowerUpper = lowerUpperPassword();
+            return passwordLowerUpper;
         
           }
         
         }
-        combineChars();
+        var passwordCombine = combineChars();
+        return passwordCombine;
     
       } else {
         alert("Must choose at least one character type.");
@@ -66,31 +106,10 @@ var generatePassword = function() {
     }
     
     
-    characterInclusions();
+    var passwordReady = characterInclusions();
+    return passwordReady;
 
   } else { alert("Length must be between 8 to 128 characters.");
 
   }
-}
-
-
-
-
-
-
-var uppercasePassword = function() {
-
-}
-
-var numerialsPassword = function() {
-
-}
-var specialCharsPassword = function() {
-
-}
-var numerialsPassword = function() {
-
-}
-var numerialsPassword = function() {
-
 }
