@@ -15,7 +15,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
  
-
+  console.log(password);
 
   passwordText.value = password;
 
@@ -253,24 +253,29 @@ var generatePassword = function() {
 
             var upperNumSpecialPassword = function() {
               var upperNumSpecialPasswordReady = "";
-              for (var i = 0; i < passwordLength; i++)
+              for (var i = 0; i < passwordLength; i++) {
               upperNumSpecialPasswordReady += upperNumSpecial[Math.floor(upperNumSpecial.length * Math.random())];
+              }
               var upperNumSpecialTest = upperNumSpecialPasswordReady.split("")
               console.log(upperNumSpecialPasswordReady)
               
               if (upperNumSpecialTest.some(item => uppercase.includes(item)) && upperNumSpecialTest.some(item => numerials.includes(item)) && upperNumSpecialTest.some(item => specialChars.includes(item))) {
+                console.log(upperNumSpecialPasswordReady)
               return upperNumSpecialPasswordReady;
               } else {
                 upperNumSpecialPassword();
               }
+              
             } 
             var passwordUpperNumSpecial = upperNumSpecialPassword();
+            console.log(passwordUpperNumSpecial);
             return passwordUpperNumSpecial;
         
           } 
         
         }
         var passwordCombine = combineChars();
+        console.log(passwordCombine);
         return passwordCombine;
     
       } else {
@@ -280,6 +285,7 @@ var generatePassword = function() {
     
     
     var passwordReady = characterInclusions();
+    console.log(passwordReady);
     return passwordReady;
 
   } else { alert("Length must be between 8 to 128 characters.");
