@@ -56,19 +56,122 @@ if (specialCharsInclude) {
 if (!lowercaseInclude && !uppercaseInclude && !numerialsInclude && !specialCharsInclude) {
     alert("Must choose at least one character type.");
 }
-// var choicePicker = function () {
+var choicePicker = function () {
         var randomPassword = [];
         for (var i = 0; i < passwordLength; i++) {
         randomPassword.push(characterOptions[Math.floor(characterOptions.length * Math.random())]);
         }
-        
-        if (lowercaseInclude) {
-        console.log(randomPassword.some(item => lowercase.includes(item)))
-        }
-        if (uppercaseInclude)
-        
+        console.log(randomPassword.join(''))
+        randomPassword.some(item => lowercase.includes(item));
+        randomPassword.some(item => uppercase.includes(item));
+        randomPassword.some(item => numerials.includes(item));
+        randomPassword.some(item => specialChars.includes(item));
 
-        
-        return randomPassword.join('');
+        switch (true) {
+            case lowercaseInclude && uppercaseInclude && numerialsInclude && specialCharsInclude:
+                console.log("All selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => numerials.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                    }
+
+            break;
+
+            case lowercaseInclude && uppercaseInclude && numerialsInclude && !specialCharsInclude:
+                console.log("Lower Upper and Num selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => numerials.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                    }
+
+            break;
+
+            case lowercaseInclude && uppercaseInclude && !numerialsInclude && specialCharsInclude:
+                console.log("Lower Upper and Special selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                }
+
+            break;
+
+            case lowercaseInclude && !uppercaseInclude && numerialsInclude && specialCharsInclude:
+                console.log("Lower Num and Special selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => numerials.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                }
+
+            break;
+            
+            case !lowercaseInclude && uppercaseInclude && numerialsInclude && specialCharsInclude:
+                console.log("Upper Num and Special selected")
+
+                if (randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => numerials.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                }
+
+            break;
+            
+            case lowercaseInclude && uppercaseInclude && !numerialsInclude && !specialCharsInclude:
+                console.log("Lower and Upper selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => uppercase.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                }
+
+            break;
+            
+            case lowercaseInclude && !uppercaseInclude && numerialsInclude && !specialCharsInclude:
+                console.log("Lower and Num selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => numerials.includes(item))) {
+                    var passwordReturn = randomPassword.join(''); return passwordReturn;
+                } else {choicePicker()
+                }
+
+            break;
+            
+            case lowercaseInclude && !uppercaseInclude && !numerialsInclude && specialCharsInclude:
+                console.log("Lower and Special selected")
+
+                if (randomPassword.some(item => lowercase.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {var passwordReturn = randomPassword.join(''); return passwordReturn;} else {choicePicker()}
+
+            break;
+            
+            case !lowercaseInclude && uppercaseInclude && numerialsInclude && !specialCharsInclude:
+                console.log("Upper and Num selected")
+
+                if (randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => numerials.includes(item))) {var passwordReturn = randomPassword.join(''); return passwordReturn;} else {choicePicker()}
+
+            break;
+            
+            case !lowercaseInclude && uppercaseInclude && !numerialsInclude && specialCharsInclude:
+                console.log("Upper and Special selected")
+
+                if (randomPassword.some(item => uppercase.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {var passwordReturn = randomPassword.join(''); return passwordReturn;} else {choicePicker()}
+
+            break;
+            
+            case !lowercaseInclude && !uppercaseInclude && numerialsInclude && specialCharsInclude:
+                console.log("Num and Special selected")
+
+                if (randomPassword.some(item => numerials.includes(item)) && randomPassword.some(item => specialChars.includes(item))) {var passwordReturn = randomPassword.join(''); return passwordReturn;} else {choicePicker()}
+
+            break;
+
         }
-      
+        var passwordChoice = choicePicker();
+        return passwordChoice;
+    }
+        
+        
+var passwordCorrect = choicePicker();
+return passwordCorrect;
+        }
