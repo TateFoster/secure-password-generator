@@ -168,6 +168,10 @@ var choicePicker = function () {
 
             break;
 
+            default :
+            var passwordReturn = randomPassword.join(''); return passwordReturn;
+
+
         }
         var passwordChoice = choicePicker();
         return passwordChoice;
